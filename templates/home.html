@@ -6,6 +6,10 @@
 
 {% if user.is_authenticated %}
     <h3>Welcome {{user.username}}</h3>
+    <p><a href="{% url 'create_profile' %}">Create Profile</a></p>
+    <p><a href="{% url 'view_profile' %}">View Profile</a></p>
+    <p><a href="{% url 'update_profile' %}">Update Profile</a></p>
+    <p><a href="{% url 'logout' %}">Logout</a></p>
 {% else %}
     <h3>You are not authenticated</h3>
     <p><a href="{% url 'login' %}">Login</a></p>

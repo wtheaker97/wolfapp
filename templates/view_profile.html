@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %} Your Profile {% endblock %}
+
+{% block body %}
+
+<h1>Your Profile</h1>
+
+<p><strong>Name:</strong> {{ profile.name }}</p>
+<p><strong>Phone Number:</strong> {{ profile.phone_number }}</p>
+<p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+<p><strong>Age:</strong> {{ profile.age }}</p>
+
+<h3>Current Address</h3>
+
+<p><strong>Street Address 1:</strong> {{ current_address.address_1 }}</p>
+<p><strong>Street Address 2:</strong> {{ current_address.address_2 }}</p>
+<p><strong>City:</strong> {{ current_address.city }}</p>
+<p><strong>Postcode:</strong> {{ current_address.postcode }}</p>
+
+<h3>Past Addresses</h3>
+{% if past_addresses %}
+  <ul>
+    {% for address in past_addresses %}
+      <li>{{ address.address_1 }}, {{ address.address_2 }}, {{ address.city }}, {{ address.postcode }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No past past_addresses found.</p>
+{% endif %}
+
+<p><a href="{% url 'home' %}">Home</a></p>
+<p><a href="{% url 'update_profile' %}">Update Profile</a></p>
+<p><a href="{% url 'delete_profile' %}">Delete Profile</a></p>
+
+{% endblock %}
